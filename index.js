@@ -1,6 +1,7 @@
 import express from 'express'; // equivalente al createServer de node:http
 import cors from 'cors'
-import { loadEnvFile } from 'node:process';
+import dotenv from 'dotenv'
+// import { loadEnvFile } from 'node:process';
 import { rateLimit } from 'express-rate-limit'
 import todosRouter from './routes/todos.routes.js'
 import { config } from 'zod'
@@ -10,7 +11,8 @@ import authRoutes from './routes/auth.routes.js';
 
 config(es())
 
-loadEnvFile() // carga las variables de entorno desde el archivo .env
+// loadEnvFile() // carga las variables de entorno desde el archivo .env
+dotenv.config()
 
 const app = express() // <- No requiere la req, res
 app.disable('x-powered-by');

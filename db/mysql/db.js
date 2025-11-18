@@ -1,9 +1,10 @@
 import mysql from 'mysql2/promise';
-import { loadEnvFile } from 'node:process'
+// import { loadEnvFile } from 'node:process'
+import dotenv from 'dotenv'
 
 
 if (!process.env.DB_HOST) {
-    loadEnvFile()
+    dotenv.config()
 }
 
 export const pool = mysql.createPool({
